@@ -17,15 +17,15 @@ def fn_savenotes():
     lcl_notes = request.forms.form_notes
     lcl_notes2 = request.forms.message
     global gbl_notes
-    gbl_notes = lcl_notes + lcl_notes2
+    gbl_notes = lcl_notes + "\n" + lcl_notes2
     print ("fn_savenotes" + gbl_notes)
-    return "<p>Notes saved.</p>"
+    return "<!DOCTYPE html><html><body><p>Notes saved.</p></body></html>"
     
 
 @route('/retrieve')
 def fn_displaynotes():
     print ("fn_displaynotes" + gbl_notes)
-    return template ("<br>Notes: {{display_notes}}<br>", display_notes=gbl_notes)
+    return template ("<!DOCTYPE html><html><body><br>Notes: {{display_notes}}</body></html>", display_notes=gbl_notes)
 
 
-run (host='0.0.0.0', port=8080)
+run (host='0.0.0.0', port=8081)
