@@ -1,5 +1,6 @@
 from bottle import route, request, run, get, post, template
 
+@route('/')
 @route('/notes')
 def fn_notes():
     return '''
@@ -25,7 +26,6 @@ def fn_savenotes():
 @route('/retrieve')
 def fn_displaynotes():
     print ("fn_displaynotes" + gbl_notes)
-    return template ("<!DOCTYPE html><html><body><br>Notes: {{display_notes}}</body></html>", display_notes=gbl_notes)
-
+    return template('retrieve.tpl', gbl_notes=gbl_notes)
 
 run (host='0.0.0.0', port=8081)
